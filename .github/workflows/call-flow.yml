@@ -1,0 +1,6 @@
+name: Reusable Flow Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Call-Reusable-Workflow:
+    uses: harshitwadhawan/gh-reusable-test/.github/workflows/reusable-flow.yml@master
