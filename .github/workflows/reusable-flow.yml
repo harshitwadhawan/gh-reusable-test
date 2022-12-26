@@ -10,7 +10,7 @@ on:
         required: true
         type: string
 jobs:
-  "Explore-Reusable-${{ inputs.env }}":
+  Explore-Reusable-"${{ inputs.env }}":
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
