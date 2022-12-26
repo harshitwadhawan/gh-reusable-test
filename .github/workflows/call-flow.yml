@@ -4,4 +4,8 @@ on: [push]
 jobs:
   Call-Reusable-Workflow:
     uses: ./.github/workflows/reusable-flow.yml
+    with: 
+      env: dev
+      cluster_name: test-orpdpsd-devls3424j-clis
+
     ##harshitwadhawan/gh-reusable-test/.github/workflows/reusable-flow.yml@master
