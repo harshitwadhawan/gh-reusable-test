@@ -24,3 +24,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  Deploy-Something:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is running deploy job on ${{ inputs.env }} with cluster ${{ inputs.cluster_name}}"
