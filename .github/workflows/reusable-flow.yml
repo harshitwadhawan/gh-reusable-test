@@ -34,6 +34,6 @@ jobs:
       - name: Running Docker login
         if: ${{ inputs.execute }} == true
         env:
-          default: ${{ secrets.DOCKER_PASS }}
-        run: docker login -u harshit895 -p $default
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+        run: docker login -u harshit895 -p $DOCKER_PASS
               
