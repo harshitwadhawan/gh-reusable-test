@@ -28,4 +28,6 @@ jobs:
   Deploy-Something:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This is running deploy job on ${{ inputs.env }} with cluster ${{ inputs.cluster_name}}"
+      - name: Running Docker login
+      - run: docker login -u harshit895 -p ${{ secrets.DOCKER_PASS }}
+        if: ${{ inputs.run }} == true      
