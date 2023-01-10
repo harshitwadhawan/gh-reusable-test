@@ -9,6 +9,9 @@ on:
       cluster_name:
         required: true
         type: string
+      execute:
+        required: true
+        type: string
 jobs:
   Explore-Reusable:
     runs-on: ubuntu-latest
