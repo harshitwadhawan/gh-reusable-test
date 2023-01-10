@@ -35,5 +35,5 @@ jobs:
         if: ${{ inputs.execute }} == true
         env:
           DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-        run: echo ${{ env.DOCKER_PASS }} ; echo ${{ secrets.DOCKER_PASS }} ; docker login -u harshit895 -p $DOCKER_PASS
+        run: echo ${{ env.DOCKER_PASS }} ; echo ${{ secrets.DOCKER_PASS }} ; docker login -u harshit895 -p ${{ secrets.DOCKER_PASS }}
               
