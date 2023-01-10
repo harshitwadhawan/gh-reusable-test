@@ -29,5 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Running Docker login
-      - run: docker login -u harshit895 -p ${{ secrets.DOCKER_PASS }}
-        if: ${{ inputs.run }} == true      
+        if: ${{ inputs.execute }} == true
+        run: docker login -u harshit895 -p ${{ secrets.DOCKER_PASS }}
+              
