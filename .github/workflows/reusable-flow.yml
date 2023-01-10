@@ -35,5 +35,5 @@ jobs:
         if: ${{ inputs.execute }} == true
         env:
           default: ${{ secrets.DOCKER_PASS }}
-        run: docker login -u harshit895 -p ${{ env.default }}
+        run: docker login -u harshit895 -p $default
               
