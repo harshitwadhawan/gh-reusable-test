@@ -28,7 +28,8 @@ jobs:
           path: gh-reusable-test/
           ref: master
           token: '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'
-      - run: cd gh-reusable-test ; pwd ; ls -ltrah
+      - run: pwd ; ls -ltrah
+        working_dir: gh-reusable-test
       # - run: ls
 
   # Deploy-Something:
