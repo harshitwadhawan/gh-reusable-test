@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: harshitwadhawan/gh-reusable-test
-          path: gh-reusable-test
+          path: gh-reusable-test/
           ref: master
           token: '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'
       - run: pwd
