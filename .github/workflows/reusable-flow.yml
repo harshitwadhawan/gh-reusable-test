@@ -19,8 +19,15 @@ jobs:
       - run: echo "The environment is ${{ inputs.env }} "
       - run: echo "My cluster name is ${{ inputs.cluster_name }}"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }} and env is ${{ inputs.env }} & cluster is ${{ inputs.cluster_name }}."
-      - name: Check out repository code
-        uses: actions/checkout@v3
+      # - name: Check out repository code
+      #   uses: actions/checkout@v3
+      - name: Checkout actions repo
+        uses: actions/checkout@v2
+        with:
+          repository: harshitwadhawan/gh-reusable-test
+          path: gh-reusable-test
+          ref: master
+          token: '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'
       - run: pwd
       - run: ls
 
