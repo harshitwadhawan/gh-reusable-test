@@ -20,15 +20,13 @@ jobs:
           echo $formatted_output
           echo "::set-output name=formatted_output::${formatted_output}"
       - name: Use Formatted Output
+        id: test
         run: |
-          echo "Formatted Output:"
           echo "${{ steps.format_output.outputs.formatted_output }}"
           IFS=',' read -ra version_array <<< "${{ steps.format_output.outputs.formatted_output }}"
           for version in "${version_array[@]}"; do
-            echo "$version"
+            echo "::set-output name=formatted_output::${version}"
           done
       - name: With step
-        uses: peter-evans/create-pull-request@v4.2.4
-        with: |
-          echo "Formatted Output:" |  awk '{ print $1 }'
-          echo "${{ steps.format_output.outputs.formatted_output }}" | awk '{ print $1 }' 
+        run: |
+            "${{ steps.test.outputs.formatted_output }}"
