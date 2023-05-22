@@ -8,19 +8,5 @@ jobs:
         id: example_step
         run: |
           echo "::set-output name=example_output::agents_version=v1.0.17-kj-1 issuance_version=v1.0.40-kj-1 notifications_version=v1.0.17-kj-1 wormhole_version=v2.1.0-kj-1"
-      - name: Format Output
-        id: format_output
-        run: |
-          formatted_output=""
-          IFS=' ' read -ra versions <<< "${{ steps.example_step.outputs.example_output }}"
-          for version in "${versions[@]}"; do
-            output+="${version},"
-            formatted_output="${output//,/$'\n'}"
-          done
-          echo $formatted_output
-          # formatted_output="${formatted_output%,}"  # Remove trailing comma
-          echo "name=$formatted_output >> $GITHUB_OUTPUT"
-      - name: Use Formatted Output
-        run: |
-          echo "${{ steps.format_output.outputs.* }}"
-        
+      - name: Format and Use Output
+        run: echo "${{ steps.example_step.outputs.example_output }}" | awk '{gsub(" ", "\n", $0); print}'
