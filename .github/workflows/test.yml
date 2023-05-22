@@ -28,6 +28,7 @@ jobs:
             echo "$version"
           done
       - name: With step
+        uses: peter-evans/create-pull-request@v4.2.4
         with: |
-          echo "Formatted Output:"
-          echo "${{ steps.format_output.outputs.formatted_output }}"
+          echo "Formatted Output:" |  awk '{ print $1 }'
+          echo "${{ steps.format_output.outputs.formatted_output }}" | awk '{ print $1 }' 
