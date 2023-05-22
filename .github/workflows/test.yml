@@ -22,5 +22,5 @@ jobs:
           echo "name=$formatted_output >> $GITHUB_OUTPUT"
       - name: Use Formatted Output
         run: |
-          echo "${{ steps.format_output.outputs.formatted_output }}"
+          echo "${{ steps.format_output.outputs.name }}"
         
