@@ -20,7 +20,7 @@ jobs:
           echo "::set-output name=formatted_output::${formatted_output}"
       - name: test
         run: |
-            echo ${{join(steps.format_output.outputs.*, '\n')}}
+            echo ${{ steps.format_output.outputs.*, '\n' }}
 #       - name: Use Formatted Output
 #         run: |
 #           echo "Formatted Output:"
