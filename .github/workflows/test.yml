@@ -22,11 +22,11 @@ jobs:
       - name: Use Formatted Output
         id: test
         run: |
-          echo "${{ steps.format_output.outputs.formatted_output }}"
+          #echo "${{ steps.format_output.outputs.formatted_output }}"
           IFS=',' read -ra version_array <<< "${{ steps.format_output.outputs.formatted_output }}"
           for version in "${version_array[@]}"; do
             #echo "::set-output name=formatted_output::${version}"
-            echo "versions=${versions[*]}" >> "${GITHUB_OUTPUT}"
+            echo "${versions} >> "${GITHUB_OUTPUT}"
           done
       - name: Ouput step
         run: |
