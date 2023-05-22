@@ -17,10 +17,12 @@ jobs:
             formatted_output+="${version},"
           done
           formatted_output="${formatted_output%,}"  # Remove trailing comma
+          echo $formatted_output
           echo "::set-output name=formatted_output::${formatted_output}"
       - name: Use Formatted Output
         run: |
           echo "Formatted Output:"
+          echo "${{ steps.format_output.outputs.formatted_output }}"
           IFS=',' read -ra version_array <<< "${{ steps.format_output.outputs.formatted_output }}"
           for version in "${version_array[@]}"; do
             echo "$version"
