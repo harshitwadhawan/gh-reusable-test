@@ -26,7 +26,7 @@ jobs:
           IFS=',' read -ra version_array <<< "${{ steps.format_output.outputs.formatted_output }}"
           for version in "${version_array[@]}"; do
             #echo "::set-output name=formatted_output::${version}"
-            echo "${versions} >> "${GITHUB_OUTPUT}"
+            echo "${version} >> "${GITHUB_OUTPUT}"
           done
       - name: Ouput step
         run: |
