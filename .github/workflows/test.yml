@@ -17,10 +17,10 @@ jobs:
             formatted_output+="${version},"
           done
           formatted_output="${formatted_output%,}"  # Remove trailing comma
-          echo "::set-output name=formatted_output::${formatted_output}"
+          echo "::set-output name=formatted_output::${{join(formatted_output, '\n')}}"
       - name: test
         run: |
-            echo ${{ steps.format_output.outputs.*, '\n' }}
+            echo ${{ steps.format_output.outputs.formatted_output }}
 #       - name: Use Formatted Output
 #         run: |
 #           echo "Formatted Output:"
