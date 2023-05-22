@@ -19,7 +19,7 @@ jobs:
           done
           echo $formatted_output
           # formatted_output="${formatted_output%,}"  # Remove trailing comma
-          echo "::set-output name=formatted_output::${formatted_output}"
+          echo "name=formatted_output >> $GITHUB_OUTPUT"
       - name: Use Formatted Output
         run: |
           echo "${{ steps.format_output.outputs.formatted_output }}"
