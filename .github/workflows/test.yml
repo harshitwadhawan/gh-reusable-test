@@ -27,6 +27,6 @@ jobs:
           for version in "${version_array[@]}"; do
             echo "::set-output name=formatted_output::${version}"
           done
-      - name: With step
+      - name: Ouput step
         run: |
-            "${{ steps.test.outputs.formatted_output }}"
+            echo "${{ steps.test.outputs.formatted_output }}"
