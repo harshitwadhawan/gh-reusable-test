@@ -14,16 +14,13 @@ jobs:
           formatted_output=""
           IFS=' ' read -ra versions <<< "${{ steps.example_step.outputs.example_output }}"
           for version in "${versions[@]}"; do
-            formatted_output+="${version},"
-            formatted_output="${formatted_output//,/$'\n'}"
+            output+="${version},"
+            formatted_output="${output//,/$'\n'}"
           done
           echo $formatted_output
-          formatted_output="${formatted_output%,}"  # Remove trailing comma
+          # formatted_output="${formatted_output%,}"  # Remove trailing comma
           echo "::set-output name=formatted_output::${formatted_output}"
       - name: Use Formatted Output
         run: |
-          echo "Formatted Output:"
-          IFS=',' read -ra version_array <<< "${{ steps.format_output.outputs.formatted_output }}"
-          for version in "${version_array[@]}"; do
-            echo "$version"
-          done
+          echo "${{ steps.format_output.outputs.formatted_output }}"
+        
