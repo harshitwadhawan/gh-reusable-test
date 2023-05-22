@@ -1,38 +1,3 @@
-# name: test
-# on: push
-# jobs:
-#   example_job:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Example Step
-#         id: example_step
-#         run: |
-#           echo "::set-output name=example_output::agents_version=v1.0.17-kj-1 issuance_version=v1.0.40-kj-1 notifications_version=v1.0.17-kj-1 wormhole_version=v2.1.0-kj-1"
-#       - name: Format Output
-#         id: format_output
-#         run: |
-#           formatted_output=""
-#           IFS=' ' read -ra versions <<< "${{ steps.example_step.outputs.example_output }}"
-#           for version in "${versions[@]}"; do
-#             formatted_output+="${version},"
-#           done
-#           formatted_output="${formatted_output%,}"  # Remove trailing comma
-#           echo $formatted_output
-#           echo "::set-output name=formatted_output::${formatted_output}"
-#       - name: Use Formatted Output
-#         id: test
-#         run: |
-#           echo "${{ steps.format_output.outputs.formatted_output }}"
-#           IFS=',' read -ra version_array <<< "${{ steps.format_output.outputs.formatted_output }}"
-#           for version in "${version_array[@]}"; do
-#             #echo "::set-output name=formatted_output::${version}"
-#             echo "${version} >> "${GITHUB_OUTPUT}"
-#           done
-#       - name: Ouput step
-#         run: |
-#             echo "${{ steps.test.outputs.formatted_output }}"
-            
-            
 name: test
 on: push
 jobs:
@@ -49,21 +14,11 @@ jobs:
           formatted_output=""
           IFS=' ' read -ra versions <<< "${{ steps.example_step.outputs.example_output }}"
           for version in "${versions[@]}"; do
-            formatted_output+="${version},"
+            f_output+="${version},"
           done
-          formatted_output="${formatted_output%,}"  # Remove trailing comma
-          echo $formatted_output
+          formatted_output="${f_output%,}"  # Remove trailing comma
           echo "::set-output name=formatted_output::${formatted_output}"
       - name: Use Formatted Output
-        id: test_out
         run: |
           echo "Formatted Output:"
-          echo "${{ steps.format_output.outputs.formatted_output }}"
-          IFS=',' read -ra version_array <<< "${{ steps.format_output.outputs.formatted_output }}"
-          for version in "${version_array[@]}"; do
-            echo "name="$version" >> "$GITHUB_OUTPUT"
-          done
-  
-      - name: Test
-        run: |
-            echo "${{ steps.test_out.outputs.name }}"
+          echo ${{ steps.format_output.outputs.formatted_output }}
