@@ -14,7 +14,8 @@ jobs:
           formatted_output=""
           IFS=' ' read -ra versions <<< "${{ steps.example_step.outputs.example_output }}"
           for version in "${versions[@]}"; do
-            formatted_output+="${version}\n"
+            formatted_output+="${version},"
+            formatted_output="${formatted_output//,/$'\n'}"
           done
           echo $formatted_output
           formatted_output="${formatted_output%,}"  # Remove trailing comma
