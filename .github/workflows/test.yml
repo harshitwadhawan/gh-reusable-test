@@ -61,9 +61,9 @@ jobs:
           echo "${{ steps.format_output.outputs.formatted_output }}"
           IFS=',' read -ra version_array <<< "${{ steps.format_output.outputs.formatted_output }}"
           for version in "${version_array[@]}"; do
-            echo "{name}="${version}" >> "${GITHUB_OUTPUT}"
+            echo "name="$version" >> "$GITHUB_OUTPUT"
           done
   
       - name: Test
         run: |
-            echo "${{ steps.test_out.outputs }}"
+            echo "${{ steps.test_out.outputs.name }}"
