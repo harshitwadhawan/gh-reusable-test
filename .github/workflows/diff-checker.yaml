@@ -3,7 +3,7 @@ name: Check Changes
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   check_changes:
