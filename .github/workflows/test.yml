@@ -1,16 +1,16 @@
-name: test
-on: push
-jobs:
-  example_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Example Step
-        id: example_step
-        run: |
-          echo "::set-output name=example_output::agents_version=v1.0.17-kj-1 issuance_version=v1.0.40-kj-1 notifications_version=v1.0.17-kj-1 wormhole_version=v2.1.0-kj-1"
-      - name: Format and Use Output
-        id: test
-        run: mix=$"(echo ${{ steps.example_step.outputs.example_output }} | awk '{gsub(" ", "\n", $0); print}') >> $GITHUB_OUTPUT
-      - name: out
-        run: |
-            echo ${{ steps.test.outputs.mix }}
+# name: test
+# on: push
+# jobs:
+#   example_job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Example Step
+#         id: example_step
+#         run: |
+#           echo "::set-output name=example_output::agents_version=v1.0.17-kj-1 issuance_version=v1.0.40-kj-1 notifications_version=v1.0.17-kj-1 wormhole_version=v2.1.0-kj-1"
+#       - name: Format and Use Output
+#         id: test
+#         run: mix=$"(echo ${{ steps.example_step.outputs.example_output }} | awk '{gsub(" ", "\n", $0); print}') >> $GITHUB_OUTPUT
+#       - name: out
+#         run: |
+#             echo ${{ steps.test.outputs.mix }}
