@@ -19,4 +19,4 @@ jobs:
           git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
 
       - name: Show changed files
-        run: cat changed_files.txt
+        run: cat changed_files.txt ; echo ${{ github.event.before }} ; echo ${{ github.event.pull_request.base.sha }} ; echo ${{ github.event_name == 'pull_request' }}
