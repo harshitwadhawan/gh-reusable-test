@@ -1,0 +1,10 @@
+name: Dev Deployment
+
+on: [push, pull_request]
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - run: echo ${{ github.event.number }}    
