@@ -15,6 +15,6 @@ jobs:
 
   pull-request-closed:
     runs-on: ubuntu-latest
-    if: github.event.action == 'closed'
+    if: github.event.action == 'closed' && github.event.pull_request.merged == 'true'
     steps:
-      - run: echo "PR-${{ github.event.number }} and ${{ github.event.action }} closed"
+      - run: echo "PR-${{ github.event.number }} and ${{ github.event.action }} merged"
