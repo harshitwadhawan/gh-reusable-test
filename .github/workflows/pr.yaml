@@ -1,0 +1,20 @@
+name: PR number
+
+on: 
+  pull_request:
+    types:
+      - closed
+      - opened
+
+jobs:
+  pull-request-open:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - run: echo "PR-${{ github.event.number }} and ${{ github.event.action }} opened"
+
+  pull-request-closed:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'closed' && github.event.pull_request.merged == 'true'
+    steps:
+      - run: echo "PR-${{ github.event.number }} and ${{ github.event.action }} merged"
