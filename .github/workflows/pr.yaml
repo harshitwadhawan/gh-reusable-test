@@ -1,0 +1,16 @@
+name: PR number
+
+on: [pull_request]
+
+jobs:
+  pull-request-open:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action }} == "opened"
+    steps:
+      - run: echo "PR-${{ github.event.number }} and ${{ github.event.action }} opened"
+
+  pull-request-closed:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action }} == "closed"
+    steps:
+      - run: echo "PR-${{ github.event.number }} and ${{ github.event.action }} closed"
